@@ -29,6 +29,10 @@ class RectangleTest {
         var r1 = new Square(4);
         var actual = ShapeStatistics.calculate(r1);
         assertEquals(expected, actual);
+
+//        var s = new Shape(); cannot create an object of abstract class
+
+
     }
 
 
