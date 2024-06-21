@@ -1,16 +1,40 @@
 package com.globalpayex.college;
 
-public class Student {
+public class Student extends CollegeUser {
     //object attributes
     //instance variables
-    String name;
-    char gender;
     int roll;
     int marks;
 
+    //Class Attributes
+    static int count;
+
+    public Student(){
+        this("NA", 'm', -1, 0);
+    }
+
+    public Student(String name, char gender, int roll, int marks) {
+        //this -> current object
+        super(name, gender); // will always come in first line
+        Student.count++;
+        this.roll = roll;
+        this.marks = marks;
+    }
+
+    public static Student createInstance(String name, char gender, int roll, int marks) {
+        var s = new Student(name, gender, roll, marks);
+        return s;
+    }
+
+    @Override
     public String getDetails() {
-//        implicit parameter - this - s1,s2 -s10 --> current object
-        return "Name: " + this.name + "\nGender: " + this.gender + "\nRoll no.: " + this.roll + "\nMarks: " + this.marks;
+                String part1 = super.getDetails();
+        return String.format(
+                "%s\nRoll no.: %s\nMarks: %s",
+                part1,
+                this.roll,
+                this.marks
+        );
     }
 
     public char getGrade() {
@@ -29,5 +53,15 @@ public class Student {
         else {
             return 'I';
         }
+    }
+
+    public void setGender(char gender) {
+        if(gender == 'M' || gender == 'F'){
+            this.gender = gender;
+        }
+    }
+
+    public char getGender() {
+        return this.gender;
     }
 }
