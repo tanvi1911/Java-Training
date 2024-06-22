@@ -1,5 +1,7 @@
 package com.globalpayex.college;
 
+import java.util.Objects;
+
 public class Student extends CollegeUser {
     //object attributes
     //instance variables
@@ -63,5 +65,26 @@ public class Student extends CollegeUser {
 
     public char getGender() {
         return this.gender;
+    }
+
+    public int getRoll() {
+        return roll;
+    }
+
+    public void setRoll(int roll) {
+        this.roll = roll;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return roll == student.roll;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(roll);
     }
 }
